@@ -1,103 +1,187 @@
-import Image from "next/image";
+import PricingCalculatorClient from "@/components/pricing-calculator/PricingCalculatorClient";
 
-export default function Home() {
+// Structured data for the pricing calculator tool
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Pricing Calculator for Handmade Products",
+  description:
+    "A comprehensive pricing calculator designed specifically for handmade product creators and artisans. Calculate materials, labor, packaging, and marketplace fees to determine optimal pricing for your crafts.",
+  url: "https://yarnnu.com/pricing-calculator",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web Browser",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  featureList: [
+    "Materials cost calculation",
+    "Labor cost tracking",
+    "Packaging and shipping costs",
+    "Markup and discount calculations",
+    "Profit margin analysis",
+    "Visual cost breakdown chart",
+  ],
+  audience: {
+    "@type": "Audience",
+    audienceType: "Handmade product creators, artisans, craft business owners",
+  },
+  creator: {
+    "@type": "Organization",
+    name: "Yarnnu",
+    url: "https://yarnnu.com",
+  },
+};
+
+export default function PricingCalculatorPage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Structured data for search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* Main content with semantic HTML structure */}
+      <article className="max-w-7xl mx-auto">
+        {/* Hero section with clear value proposition */}
+        <header className="text-center py-8 px-4 bg-gradient-to-r from-purple-50 to-blue-50">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Pricing Calculator for Handmade Products
+          </h1>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Take the guesswork out of pricing your handmade products and spend
+            more time making. Our simple calculator helps you account for
+            materials, labor, and packaging costs to ensure you&apos;re pricing for profit.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+            <span className="flex items-center">
+              <svg
+                className="w-4 h-4 mr-2 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Free to use
+            </span>
+            <span className="flex items-center">
+              <svg
+                className="w-4 h-4 mr-2 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              No registration required
+            </span>
+            <span className="flex items-center">
+              <svg
+                className="w-4 h-4 mr-2 text-green-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              Real-time calculations
+            </span>
+          </div>
+        </header>
+
+        {/* Calculator tool */}
+        <section aria-label="Pricing Calculator Tool">
+          <PricingCalculatorClient />
+        </section>
+
+        {/* Additional information and tips */}
+        <section className="px-4 py-8 bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              Pricing Tips for Handmade Products
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Understanding Your Costs
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Track all material costs, including waste</li>
+                  <li>• Calculate your time at a fair hourly rate</li>
+                  <li>• Include packaging and shipping materials</li>
+                  <li>• Factor in your desired profit margin</li>
+                </ul>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  Pricing Strategies
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Research competitor pricing in your niche</li>
+                  <li>
+                    • Consider your target market&apos;s price sensitivity
+                  </li>
+                  <li>• Factor in seasonal demand fluctuations</li>
+                  <li>• Build in room for discounts and promotions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ section for SEO */}
+        <section className="px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  How do I calculate my hourly rate for labor?
+                </h3>
+                <p className="text-gray-700">
+                  Consider your skill level, experience, and local market rates.
+                  Many artisans charge between $15-50 per hour depending on
+                  their expertise and the complexity of their work.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  What markup percentage should I use?
+                </h3>
+                <p className="text-gray-700">
+                  Typical markups range from 20-100% depending on your market,
+                  competition, and product uniqueness. Start with 50% and adjust
+                  based on your research and testing.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  How do I account for packaging costs?
+                </h3>
+                <p className="text-gray-700">
+                  Include all packaging materials like boxes, bubble wrap, tape, 
+                  and labels. Don&apos;t forget to factor in the cost per unit 
+                  based on how many items each package can hold.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </>
   );
 }
